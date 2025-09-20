@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <h1>Task Manager</h1>
+        <div class="controls">
+            <button id="refreshBtn" class="btn">Refresh</button>
+            <button id="addBtn" class="btn primary">Create task</button>
+        </div>
+    </header>
+
+    <main class="container" id="tasksWrap">
+        <p class="muted">Загрузка...</p>
+    </main>
+
+    <div id="modal" class="modal hidden" aria-hidden="true">
+        <div class="modal-card">
+            <header>
+                <h3 id="modalTitle">New task</h3>
+                <button id="closeModal" class="close">&times;</button>
+            </header>
+            <form id="taskForm">
+                <div class="field">
+                    <label for="title">Title</label>
+                    <input id="title" name="title" required maxlength="200" />
+                </div>
+                <div class="field">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" maxlength="1000"></textarea>
+                </div>
+                <div class="row">
+                    <div class="field small">
+                        <label for="importance">Importance (1-5)</label>
+                        <input id="importance" name="importance" type="number" min="1" max="5" value="1" />
+                    </div>
+                    <div class="field small">
+                        <label for="due_date">Due date</label>
+                        <input id="due_date" name="due_date" type="datetime-local" />
+                    </div>
+                </div>
+                <div class="actions">
+                    <button type="submit" class="btn primary">Save</button>
+                    <button type="button" id="cancelBtn" class="btn">Cancel</button>
+                </div>
+                <div id="curlOutput" class="curl-output" style="margin-top: 12px; font-family: monospace; white-space: pre-wrap; background: #f3f4f6; padding: 8px; border-radius: 6px;"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+:root {
+    --importance-1: #504dff;
+    --importance-2: #75ff25;
+    --importance-3: #d0ff00;
+    --importance-4: #f97316;
+    --importance-5: #dc2626;
+    --importance-default: #e5e7eb;
+}
+
+:root {
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --danger: #dc2626;
+    --radius: 8px;
+    --gap: 12px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: #0f172a;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent);
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: 28px
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.container {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 0 16px
+}
+
+.panel {
+    background: var(--card);
+    padding: 18px;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04)
+}
+
+.table-wrap {
+    overflow: auto
+}
+
+.tasks {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px
+}
+
+.tasks thead th {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #e6eef8;
+    color: var(--muted)
+}
+
+.tasks tbody td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #f0f4f8;
+    vertical-align: middle
+}
+
+.muted {
+    text-align: center;
+    color: var(--muted);
+    padding: 30px 0
+}
+
+.btn {
+    background: #fff;
+    border: 1px solid #d1d5db;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: transparent
+}
+
+.btn.danger {
+    background: var(--danger);
+    color: #fff;
+    border-color: transparent
+}
+
+.field {
+    margin-bottom: 10px
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 6px
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px
+}
+
+.field.small {
+    flex: 1;
+}
+
+.row {
+    display: flex;
+    gap: 12px
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 6, 23, 0.4)
+}
+
+.modal.hidden {
+    display: none
+}
+
+.modal-card {
+    width: 520px;
+    background: var(--card);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 8px 40px rgba(2, 6, 23, 0.15)
+}
+
+.modal-card header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px
+}
+
+.close {
+    background: none;
+    border: 0;
+    font-size: 22px;
+    cursor: pointer
+}
+
+.small-btn {
+    font-size: 13px;
+    padding: 6px 8px
+}
+
+.controls .btn {
+    padding: 8px 10px
+}
+
+.task-section {
+    margin-bottom: 24px;
+}
+
+.task-section h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #e6eef8;
+    padding-bottom: 4px;
+}
+
+.task-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 12px;
+    margin-bottom: 8px;
+    border-left: 5px solid;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.task-card:hover {
+    background: #f0f4f8;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.task-body.hidden {
+    display: none;
+}
+
+.task-body p {
+    margin: 4px 0;
+}
+
+.task-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+}
