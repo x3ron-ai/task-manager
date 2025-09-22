@@ -4,7 +4,6 @@ from fastapi.staticfiles import StaticFiles
 from app.routers import tasks
 from app.views import home
 
-
 app = FastAPI(
     title="Task Manager",
     description="Local Task Manager Server",

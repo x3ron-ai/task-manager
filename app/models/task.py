@@ -7,6 +7,8 @@ from sqlalchemy import (
     CheckConstraint,
     Index,
 )
+from sqlalchemy.sql import func
+
 from app.core.db import Base
 
 
@@ -18,7 +20,7 @@ class Task(Base):
     description = Column(String, nullable=True)
     completed = Column(Boolean, default=False, nullable=False)
     importance = Column(Integer, default=1, nullable=False)
-    due_date = Column(DateTime, nullable=True)
+    due_date = Column(DateTime(timezone=True), nullable=True, server_default=func.now())
 
     __table_args__ = (
         CheckConstraint("importance BETWEEN 1 AND 5", name="importance_range"),

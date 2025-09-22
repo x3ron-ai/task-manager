@@ -167,7 +167,7 @@ taskForm.addEventListener("submit", async (ev) => {
         title: qs("#title").value.trim(),
         description: qs("#description").value.trim() || null,
         importance: Number(qs("#importance").value) || 1,
-        due_date: qs("#due_date").value ? new Date(qs("#due_date").value).toISOString() : null
+        due_date: qs("#due_date").value || null
     };
     try {
         if (editId) {

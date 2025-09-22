@@ -8,6 +8,9 @@ from app.models.task import Task
 from app.schemas.task import TaskCreate, TaskRead, TaskUpdate
 from app.core.utils import normalize_datetime
 
+import logging
+
+
 router = APIRouter()
 
 

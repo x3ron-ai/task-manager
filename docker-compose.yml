@@ -6,9 +6,8 @@ services:
     container_name: task-manager
     ports:
       - "8000:8000"
-    environment:
-      - PYTHONUNBUFFERED=1
-      - DATABASE_URL=sqlite+aiosqlite:///./test.db
+    env_file:
+      - .env
     volumes:
       - .:/app
     restart: unless-stopped
