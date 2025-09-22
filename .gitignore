@@ -4,3 +4,6 @@ env/
 
 *.db
 __pycache__/
+report.html
+*.html
+.vscode/
