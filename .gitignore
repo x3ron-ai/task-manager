@@ -1,4 +1,6 @@
 env/
 .env
+.envrc
+
 *.db
 __pycache__/
