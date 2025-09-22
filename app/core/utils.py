@@ -1,4 +1,4 @@
-from datetime import timezone, datetime
+from datetime import datetime
 
 
 def normalize_datetime(dt: datetime | None) -> datetime | None:

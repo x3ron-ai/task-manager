@@ -13,6 +13,8 @@ from app.core.db import Base
 
 
 class Task(Base):
+    """SQLAlchemy model for tasks."""
+
     __tablename__ = "tasks"
 
     id = Column(Integer, primary_key=True, index=True)

@@ -2,20 +2,18 @@ import pytest
 from fastapi.testclient import TestClient
 from app.main import app
 
+
 def test_ping():
     with TestClient(app) as client:
         resp = client.get("/ping")
     assert resp.status_code == 200
     assert resp.json() == {"msg": "pong"}
 
+
 def test_create_and_get_task():
     with TestClient(app) as client:
         # Create task
-        data = {
-            "title": "Test task",
-            "description": "Test desc",
-            "importance": 3
-        }
+        data = {"title": "Test task", "description": "Test desc", "importance": 3}
         resp = client.post("/api/tasks/", json=data)
         assert resp.status_code == 201
         task = resp.json()
@@ -27,6 +25,7 @@ def test_create_and_get_task():
         assert resp.status_code == 200
         got = resp.json()
         assert got["id"] == task["id"]
+
 
 def test_update_and_delete_task():
     with TestClient(app) as client:

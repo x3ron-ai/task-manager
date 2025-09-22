@@ -8,18 +8,18 @@ from app.models.task import Task
 from app.schemas.task import TaskCreate, TaskRead, TaskUpdate
 from app.core.utils import normalize_datetime
 
-import logging
-
 
 router = APIRouter()
 
 
 async def get_db():
+    """Yield an asynchronous database session."""
     async with AsyncSessionLocal() as db:
         yield db
 
 
 async def get_task_or_404(db: AsyncSession, task_id: int) -> Task:
+    """Retrieve a task by ID or raise a 404 error if not found."""
     result = await db.execute(select(Task).where(Task.id == task_id))
     task = result.scalar_one_or_none()
     if not task:
@@ -33,6 +33,7 @@ async def get_tasks(
     completed: Optional[bool] = None,
     importance: Optional[int] = None,
 ):
+    """Retrieve a list of tasks, optionally filtered by completion status and importance."""
     stmt = select(Task)
     if completed is not None:
         stmt = stmt.where(Task.completed == completed)
@@ -47,12 +48,14 @@ async def get_tasks(
 
 @router.get("/{task_id}", response_model=TaskRead)
 async def get_task(task_id: int, db: AsyncSession = Depends(get_db)):
+    """Retrieve a single task by ID."""
     task = await get_task_or_404(db, task_id)
     return task
 
 
 @router.post("/", response_model=TaskRead, status_code=status.HTTP_201_CREATED)
 async def add_task(task_in: TaskCreate, db: AsyncSession = Depends(get_db)):
+    """Create a new task."""
     task = Task(
         title=task_in.title,
         description=task_in.description,
@@ -69,6 +72,7 @@ async def add_task(task_in: TaskCreate, db: AsyncSession = Depends(get_db)):
 async def update_task(
     task_id: int, task_in: TaskUpdate, db: AsyncSession = Depends(get_db)
 ):
+    """Update an existing task."""
     task = await get_task_or_404(db, task_id)
     if task_in.title is not None:
         task.title = task_in.title
@@ -87,6 +91,7 @@ async def update_task(
 
 @router.delete("/{task_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_task(task_id: int, db: AsyncSession = Depends(get_db)):
+    """Delete a task by ID."""
     task = await get_task_or_404(db, task_id)
     await db.delete(task)
     await db.commit()

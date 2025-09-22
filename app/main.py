@@ -16,4 +16,5 @@ app.include_router(home.router, prefix="", tags=["UI"])
 
 @app.get("/ping")
 async def ping():
+    """Health check endpoint."""
     return {"msg": "pong"}
