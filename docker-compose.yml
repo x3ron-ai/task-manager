@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  task-manager:
+    build: .
+    container_name: task-manager
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=sqlite+aiosqlite:///./test.db
+    volumes:
+      - .:/app
+    restart: unless-stopped
